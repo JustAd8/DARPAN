@@ -1,4 +1,4 @@
-# Road Telemetry IoT Project
+# Darpan - Road Telemetry IoT System
 
 A Java-based IoT signal processing and telemetry system.
 
