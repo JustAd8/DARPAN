@@ -5,10 +5,13 @@
 
   color-scheme: dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #050505; /* Deep black context */
+  background-color: #050505;
+  /* Deep black context */
 
-  --primary-color: #00f2ff; /* Cyberpunk Cyan */
-  --secondary-color: #7000ff; /* Neon Purple */
+  --primary-color: #00f2ff;
+  /* Cyberpunk Cyan */
+  --secondary-color: #7000ff;
+  /* Neon Purple */
   --alert-color: #ff0055;
   --glass-bg: rgba(20, 20, 20, 0.6);
   --glass-border: rgba(255, 255, 255, 0.1);
@@ -21,7 +24,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background: 
+  background:
     radial-gradient(circle at 10% 20%, rgba(112, 0, 255, 0.15) 0%, transparent 20%),
     radial-gradient(circle at 90% 80%, rgba(0, 242, 255, 0.1) 0%, transparent 20%);
   background-size: cover;
@@ -52,7 +55,9 @@ body {
   box-shadow: 0 8px 32px 0 rgba(0, 242, 255, 0.1);
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   margin: 0;
   color: #fff;
   letter-spacing: -0.02em;
@@ -60,15 +65,76 @@ h1, h2, h3 {
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
+
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: rgba(0, 0, 0, 0.1);
 }
+
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.btn-danger {
+  background: rgba(255, 0, 85, 0.1);
+  border: 1px solid #ff0055;
+  color: #ff0055;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+  font-size: 0.8rem;
+}
+
+.btn-danger:hover {
+  background: #ff0055;
+  color: #fff;
+  box-shadow: 0 0 15px #ff0055;
+}
+
+.btn-small {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.7rem;
+}
+
+.btn-small:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.ping-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid var(--primary-color);
+  animation: ping 1.5s infinite;
+}
+
+@keyframes ping {
+  0% {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+  }
+
+  100% {
+    width: 300%;
+    height: 300%;
+    opacity: 0;
+  }
 }

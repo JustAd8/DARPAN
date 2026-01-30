@@ -12,12 +12,17 @@ const TelemetryLog = ({ logs }) => {
             <h3 style={{ marginBottom: '10px', fontSize: '1rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '5px' }}>
                 System Logs
             </h3>
-            <div style={{ flex: 1, overflowY: 'auto', fontFamily: 'monospace', fontSize: '0.85rem' }}>
-                {logs.length === 0 && <div style={{ color: '#555' }}>Waiting for data stream...</div>}
+            <div style={{ flex: 1, overflowY: 'auto', fontFamily: 'Consolas, monospace', fontSize: '0.8rem' }}>
+                {logs.length === 0 && <div style={{ color: '#555', padding: '10px' }}>System Ready. Waiting for events...</div>}
                 {logs.map((log, i) => (
-                    <div key={i} style={{ marginBottom: '4px', color: i === logs.length - 1 ? '#fff' : '#888' }}>
-                        <span style={{ color: '#555', marginRight: '8px' }}>[{log.time}]</span>
-                        <span>{log.message}</span>
+                    <div key={i} style={{
+                        display: 'grid', gridTemplateColumns: '60px 40px 1fr', gap: '10px',
+                        padding: '4px 0', borderBottom: '1px solid rgba(255,255,255,0.05)',
+                        color: i === logs.length - 1 ? '#fff' : '#aaa'
+                    }}>
+                        <span style={{ color: '#666' }}>{log.time}</span>
+                        <span style={{ color: 'var(--primary-color)', textAlign: 'right' }}>{log.id}</span>
+                        <span>{log.message || log.msg}</span>
                     </div>
                 ))}
                 <div ref={bottomRef} />
