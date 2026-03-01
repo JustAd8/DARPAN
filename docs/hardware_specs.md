@@ -5,12 +5,12 @@ Since you asked about hardware *other than* the ESP32 module, I have categorized
 ## 1. Essential Sensors (The "Eyes & Ears")
 To collect road telemetry, you need specific sensors to feed data to your processor.
 
-| Component | Recommended Model | Purpose | Why this one? |
-| :--- | :--- | :--- | :--- |
-| **GPS / GNSS Module** | **NEO-M8N** or **NEO-6M** | Position, Speed, Altitude, Timestamp | The **M8N** is superior for road use; it supports 10Hz update rates (10 readings/sec), whereas the basic 6M is 1Hz. Accurate speed requires high refresh rates. |
-| **IMU (Accelerometer + Gyro)** | **MPU-6050** or **BNO055** | Pothole detection, cornering G-force, road grade | **MPU-6050** is the standard low-cost choice. **BNO055** is more expensive but includes an onboard fusion algorithm for perfect orientation without complex math. |
-| **OBD-II Interface** | **ELM327 (UART/Bluetooth)** | Engine RPM, Throttle Position, Fuel Level | Connects to the car's diagnostic port to get internal vehicle metrics. |
-| **Magnetometer** (Optional) | **HMC5883L** | Compass Heading | Often built into 9-axis IMUs like MPU-9250. Helps determine vehicle direction when stationary. |
+| Component                      | Recommended Model           | Purpose                                          | Why this one?                                                                                                                                                     |
+| :----------------------------- | :-------------------------- | :----------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **GPS / GNSS Module**          | **NEO-M8N** or **NEO-6M**   | Position, Speed, Altitude, Timestamp             | The **M8N** is superior for road use; it supports 10Hz update rates (10 readings/sec), whereas the basic 6M is 1Hz. Accurate speed requires high refresh rates.   |
+| **IMU (Accelerometer + Gyro)** | **MPU-6050** or **BNO055**  | Pothole detection, cornering G-force, road grade | **MPU-6050** is the standard low-cost choice. **BNO055** is more expensive but includes an onboard fusion algorithm for perfect orientation without complex math. |
+| **OBD-II Interface**           | **ELM327 (UART/Bluetooth)** | Engine RPM, Throttle Position, Fuel Level        | Connects to the car's diagnostic port to get internal vehicle metrics.                                                                                            |
+| **Magnetometer** (Optional)    | **HMC5883L**                | Compass Heading                                  | Often built into 9-axis IMUs like MPU-9250. Helps determine vehicle direction when stationary.                                                                    |
 
 ## 2. Power Supply (Crucial for Automotive)
 Cars operate on 12V (or 24V for trucks), which will fry an ESP32 or Raspberry Pi (which need 5V/3.3V).
