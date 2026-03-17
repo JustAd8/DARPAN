@@ -1,0 +1,3 @@
+Handles HTTP requests from the mobile app
+
+> This is the API endpoint 

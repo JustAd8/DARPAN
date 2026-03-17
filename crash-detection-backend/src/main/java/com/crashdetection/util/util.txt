@@ -1,0 +1,4 @@
+Reusable helper functions.
+
+Example:
+    Distance calculation between two coordinates.

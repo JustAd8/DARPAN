@@ -1,0 +1,3 @@
+Centralized exception handling. 
+
+Ensures API errors return structured responses. 

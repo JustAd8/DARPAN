@@ -1,0 +1,6 @@
+DTO = Data Transfer Object
+
+These are used for API requests and responses instead of exposing database. 
+
+in other words
+> These define what data the mobile app must send
