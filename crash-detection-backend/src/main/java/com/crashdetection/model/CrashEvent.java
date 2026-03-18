@@ -17,14 +17,9 @@ public class CrashEvent {
     private Long id;
 
     private String vehicleId;
-
     private double latitude;
-
     private double longitude;
-
     private double speed;
-
     private double impactForce;
-
     private LocalDateTime timestamp;
 }
