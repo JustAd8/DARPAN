@@ -7,7 +7,7 @@ import com.crashdetection.repository.CrashEventRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import java.time.LocalDateTime;   
 
 @Service
 @RequiredArgsConstructor
@@ -15,6 +15,7 @@ public class CrashService {
 
     private final CrashEventRepository crashRepository;
     private final LocationService locationService;
+    private final NotificationService notificationService;
 
     public EmergencyServiceEntity processCrash(CrashAlertRequest request) {
 
@@ -27,13 +28,21 @@ public class CrashService {
                 .timestamp(LocalDateTime.now())
                 .build();
 
-        CrashEvent saved = crashRepository.save(event);
+        crashRepository.save(event);
 
-        // 🔥 Find nearest emergency service
-        EmergencyServiceEntity nearest = locationService.findNearest(
-                request.getLatitude(),
-                request.getLongitude()
-        );
+        EmergencyServiceEntity nearest =
+                locationService.findNearest(
+                        request.getLatitude(),
+                        request.getLongitude()
+                );
+
+        //  Send Notification
+        String message = "Crash detected at: "
+                + request.getLatitude() + ", " + request.getLongitude();
+
+        String dummyToken = "TEST_FCM_TOKEN"; // will replace later
+
+        notificationService.sendCrashAlert(dummyToken, message);
 
         return nearest;
     }
