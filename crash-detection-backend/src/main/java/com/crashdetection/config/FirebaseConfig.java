@@ -1,3 +1,4 @@
+//included debug files
 package com.crashdetection.config;
 
 import com.google.auth.oauth2.GoogleCredentials;
@@ -14,19 +15,26 @@ public class FirebaseConfig {
     @PostConstruct
     public void init() {
         try {
+            System.out.println("🔥 Initializing Firebase...");
+
             InputStream serviceAccount =
                     getClass().getClassLoader()
                             .getResourceAsStream("firebase-service-account.json");
+
+            if (serviceAccount == null) {
+                throw new RuntimeException("❌ Firebase JSON file NOT FOUND");
+            }
 
             FirebaseOptions options = FirebaseOptions.builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
                     .build();
 
-            if (FirebaseApp.getApps().isEmpty()) {
-                FirebaseApp.initializeApp(options);
-            }
+            FirebaseApp.initializeApp(options);
+
+            System.out.println("✅ Firebase initialized successfully");
 
         } catch (Exception e) {
+            System.out.println("❌ Firebase initialization failed");
             e.printStackTrace();
         }
     }

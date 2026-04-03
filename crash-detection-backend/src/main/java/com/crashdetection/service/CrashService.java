@@ -17,6 +17,7 @@ public class CrashService {
     private final LocationService locationService;
     private final NotificationService notificationService;
 
+    
     public EmergencyServiceEntity processCrash(CrashAlertRequest request) {
 
         CrashEvent event = CrashEvent.builder()
@@ -40,8 +41,10 @@ public class CrashService {
         String message = "Crash detected at: "
                 + request.getLatitude() + ", " + request.getLongitude();
 
-        String dummyToken = "TEST_FCM_TOKEN"; // will replace later
+        // FCM token of my android phone
+        String dummyToken = "dyHzgPC7SnqrLipCSY5mwy:APA91bF43AW6gWZgFPE4Lv9B7_1vtMJkipK69qDkcLbu5CtF-Tm_R9rTCvCZxmwaIqD-f99Bg2RyQxXw9i1zdwWpCLD5OE8IzG07xERKW9ClGenImiKW0qU"; 
 
+        System.out.println("Sending notification...");
         notificationService.sendCrashAlert(dummyToken, message);
 
         return nearest;
